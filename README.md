@@ -4,10 +4,10 @@
 <img  title="Imagem do projeto desktop" src="./public/github/desktop2.png" alt="Imagem do projeto desktop"  />
 
 ## 📱 Mobile
-
+<div align="center" style="justify-content:center; display:flex; flex-direction:column; gap:20px">
 <img  title="Imagem do projeto mobile" src="./public/github/mobile.png" alt="Imagem do projeto mobile"  />
 <img  title="Imagem do projeto mobile" src="./public/github/mobile2.png" alt="Imagem do projeto mobile"  />
-
+</div>
 ## 📌 Sobre
 
 **Notes** é um projeto para pesquisa de armazenamento de notas, onde é possivel usar a api do navegador para transformar áudio em texto.
