@@ -6,6 +6,7 @@
 ## 📱 Mobile
 
 <img  title="Imagem do projeto mobile" src="./public/github/mobile.png" alt="Imagem do projeto mobile"  />
+<img  title="Imagem do projeto mobile" src="./public/github/mobile2.png" alt="Imagem do projeto mobile"  />
 
 ## 📌 Sobre
 
