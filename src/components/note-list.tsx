@@ -2,6 +2,7 @@ import { useState } from "react";
 import NewNoteCard from "./new-note-card";
 import NoteCard from "./note-card";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from "sonner";
 
 interface INote {
   id: string;
@@ -47,6 +48,14 @@ const NoteList = ({ search }: NoteListProps) => {
     setNotes((notes) => [newNote, ...notes]);
   }
 
+  const onNoteDeleted = (id: string) => {
+    const filteredNotes = notes.filter((note) => note.id !== id);
+
+    setNotes(filteredNotes);
+    localStorage.setItem("notes", JSON.stringify(filteredNotes));
+    toast.success("Note deletada com sucesso!");
+  };
+
   const filteredNotes =
     search === ""
       ? notes
@@ -59,7 +68,13 @@ const NoteList = ({ search }: NoteListProps) => {
       <NewNoteCard onNoteCreated={onNoteCreated} />
       {filteredNotes.map((note) => {
         return (
-          <NoteCard key={note.id} date={note.date} content={note.content} />
+          <NoteCard
+            key={note.id}
+            date={note.date}
+            id={note.id}
+            content={note.content}
+            onNoteDeleted={onNoteDeleted}
+          />
         );
       })}
     </div>

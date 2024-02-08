@@ -27,6 +27,7 @@ const NewNoteCard = ({ onNoteCreated }: INewNoteCard) => {
   const handleDialogClose = () => {
     setIsOnboardingOpen(true);
     setTextAreaContent("");
+    handleStopRecording();
   };
 
   const handleSaveNote = () => {
@@ -84,13 +85,13 @@ const NewNoteCard = ({ onNoteCreated }: INewNoteCard) => {
         </p>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.DialogOverlay className="inset-0 fixed bg-slate-900/60" />
+        <Dialog.DialogOverlay className="inset-0  bg-slate-900/60" />
 
-        <Dialog.DialogContent className="top-1/2 left-1/2 overflow-hidden -translate-x-1/2 -translate-y-1/2 h-3/5 max-h-[60vh] z-10 md:w-full w-[calc(100%-1.5rem)]  md:max-w-screen-sm flex flex-col outline-none rounded-md bg-slate-700 absolute mx-auto">
+        <Dialog.DialogContent className="inset-0 ring-1 ring-slate-600 fixed md:inset-auto md:top-1/2 md:left-1/2 overflow-hidden md:-translate-x-1/2 md:-translate-y-1/2 md:h-3/5 md:max-h-[60vh] z-10 w-full md:max-w-screen-sm flex flex-col outline-none md:rounded-md bg-slate-700  md:mx-auto">
           <Dialog.Close className="absolute right-0 top-0 bg-slate-800 text-slate-400 p-1.5 hover:text-slate-200">
             <XIcon size={20} />
           </Dialog.Close>
-          <form className="flex flex-col flex-1">
+          <form className="flex flex-col flex-1 w-full ">
             <div className="flex flex-1 flex-col gap-3 p-5">
               <p className="text-sm font-medium text-slate-300">
                 Adicionar nota
