@@ -2,7 +2,12 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-const NewNoteCard = () => {
+
+interface INewNoteCard {
+  onNoteCreated: (content: string) => void;
+}
+
+const NewNoteCard = ({ onNoteCreated }: INewNoteCard) => {
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(true);
   const [textAreaContent, setTextAreaContent] = useState("");
 
@@ -25,6 +30,9 @@ const NewNoteCard = () => {
     e.preventDefault();
     console.log(textAreaContent);
     toast.success("Nota criada com sucesso!");
+    setTextAreaContent("");
+    onNoteCreated(textAreaContent);
+    setIsOnboardingOpen(true);
   };
 
   return (
@@ -39,7 +47,7 @@ const NewNoteCard = () => {
       <Dialog.Portal>
         <Dialog.DialogOverlay className="inset-0 fixed bg-slate-900/60" />
 
-        <Dialog.DialogContent className="top-1/2 left-1/2 overflow-hidden -translate-x-1/2 -translate-y-1/2 h-3/5 z-10 md:w-full w-[calc(100%-1.5rem)]  md:max-w-screen-sm flex flex-col outline-none rounded-md bg-slate-700 absolute mx-auto">
+        <Dialog.DialogContent className="top-1/2 left-1/2 overflow-hidden -translate-x-1/2 -translate-y-1/2 h-3/5 max-h-[60vh] z-10 md:w-full w-[calc(100%-1.5rem)]  md:max-w-screen-sm flex flex-col outline-none rounded-md bg-slate-700 absolute mx-auto">
           <Dialog.Close className="absolute right-0 top-0 bg-slate-800 text-slate-400 p-1.5 hover:text-slate-200">
             <XIcon size={20} />
           </Dialog.Close>
@@ -68,6 +76,7 @@ const NewNoteCard = () => {
                   autoFocus
                   className="text-sm leading-6 bg-transparent text-slate-400 resize-none flex-1 outline-none"
                   onChange={handleTextareaChange}
+                  value={textAreaContent}
                 />
               )}
             </div>
