@@ -53,7 +53,7 @@ const NoteList = ({ search }: NoteListProps) => {
 
     setNotes(filteredNotes);
     localStorage.setItem("notes", JSON.stringify(filteredNotes));
-    toast.success("Note deletada com sucesso!");
+    toast.success("Nota deletada com sucesso!");
   };
 
   const filteredNotes =
